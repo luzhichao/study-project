@@ -1,4 +1,4 @@
-package org.gecko.reformer.test.jzzms;
+package org.gecko.reformer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.gecko.reformer.question.Question;

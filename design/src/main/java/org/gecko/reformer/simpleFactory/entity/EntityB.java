@@ -1,0 +1,19 @@
+package org.gecko.reformer.simpleFactory.entity;
+
+import lombok.Data;
+
+/**
+ * 子类B
+ *
+ * @author LZC
+ * @version 1.0.0
+ * @date 2022-06-25
+ **/
+@Data
+public class EntityB extends AbsEntity {
+    private static final long serialVersionUID = 1L;
+
+    private String startDate;
+    private String endDate;
+
+}

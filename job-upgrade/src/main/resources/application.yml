@@ -1,0 +1,13 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: job-upgrade
+reformer:
+  gecko:
+    job:
+      type: xxl_job
+      app-name: ${spring.application.name}
+      admin-address: http://reformer.job:7777/reformer-job-admin/
+      log-path: /home/logs/xxl-job/${spring.application.name}
+

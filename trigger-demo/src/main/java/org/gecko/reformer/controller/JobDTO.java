@@ -49,4 +49,7 @@ public class JobDTO implements Serializable {
     @ApiModelProperty("任务结束时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date endTime;
+    /*** 是否启用 **/
+    @ApiModelProperty("是否启用")
+    private Boolean enable;
 }

@@ -6,8 +6,10 @@ import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
 import org.gecko.reformer.annotation.WebController;
 import org.gecko.reformer.engine.ScheduleJobEngine;
-import org.gecko.reformer.pojo.CronScheduleJobManyDTO;
+import org.gecko.reformer.pojo.CronScheduleJobManyDO;
 import org.gecko.reformer.job.TestJob;
+import org.gecko.reformer.pojo.CronScheduleJobSingleDO;
+import org.gecko.reformer.pojo.SimpleScheduleJobDO;
 import org.gecko.reformer.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,8 +35,8 @@ public class TestController {
     @ApiOperation("testSimpleJobCreate")
     @PostMapping("/testSimpleJobCreate")
     public Result<String> testSimpleJobCreate(@RequestBody JobDTO dto) {
-        final CronScheduleJobManyDTO jobDTO = BeanUtil.copyProperties(dto, CronScheduleJobManyDTO.class);
-        ScheduleJobEngine.createCronManyJob(jobDTO, job);
+        final SimpleScheduleJobDO jobDTO = BeanUtil.copyProperties(dto, SimpleScheduleJobDO.class);
+        ScheduleJobEngine.createSimpleJob(jobDTO, job);
         return Result.success();
     }
 
@@ -42,8 +44,8 @@ public class TestController {
     @ApiOperation("testCronSingleJobCreate")
     @PostMapping("/testCronSingleJobCreate")
     public Result<String> testCronSingleJobCreate(@RequestBody JobDTO dto) {
-        final CronScheduleJobManyDTO jobDTO = BeanUtil.copyProperties(dto, CronScheduleJobManyDTO.class);
-        ScheduleJobEngine.createCronManyJob(jobDTO, job);
+        final CronScheduleJobSingleDO jobDTO = BeanUtil.copyProperties(dto, CronScheduleJobSingleDO.class);
+        ScheduleJobEngine.createCronSingleJob(jobDTO, job);
         return Result.success();
     }
 
@@ -51,7 +53,7 @@ public class TestController {
     @ApiOperation("testCronManyJonCreate")
     @PostMapping("/testCronManyJonCreate")
     public Result<String> testCronManyJonCreate(@RequestBody JobDTO dto) {
-        final CronScheduleJobManyDTO jobDTO = BeanUtil.copyProperties(dto, CronScheduleJobManyDTO.class);
+        final CronScheduleJobManyDO jobDTO = BeanUtil.copyProperties(dto, CronScheduleJobManyDO.class);
         ScheduleJobEngine.createCronManyJob(jobDTO, job);
         return Result.success();
     }
@@ -61,7 +63,6 @@ public class TestController {
     @PostMapping("/testPauseJob")
     public Result<String> testPauseJob(@RequestBody String group) {
         ScheduleJobEngine.pauseJob(group);
-
         return Result.success();
     }
 

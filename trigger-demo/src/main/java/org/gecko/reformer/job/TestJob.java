@@ -20,7 +20,7 @@ public class TestJob implements ReformerScheduleJob {
     @Override
     public void run(JobExecutionContext context, Object param) {
         final TriggerKey key = context.getTrigger().getKey();
-        log.info("=====执行HelloJob业务任务了===group=【{}】===name=【{}】=====参数=====【{}】", key.getGroup(), key.getName(), JSONUtil.toJsonStr(param));
+        log.info("=====执行TestJob业务任务了===group=【{}】===name=【{}】=====参数=====【{}】", key.getGroup(), key.getName(), JSONUtil.toJsonStr(param));
     }
 }
 

@@ -16,28 +16,12 @@
     <dependencies>
         <dependency>
             <groupId>org.gecko.reformer</groupId>
-            <artifactId>common-base</artifactId>
-            <version>2021.10-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.gecko.reformer</groupId>
-            <artifactId>common-exception</artifactId>
-            <version>2021.10-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.gecko.reformer</groupId>
-            <artifactId>common-log</artifactId>
-            <version>2021.10-SNAPSHOT</version>
+            <artifactId>module-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.gecko.reformer</groupId>
             <artifactId>module-auto-table-starter</artifactId>
             <version>2021.10-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 

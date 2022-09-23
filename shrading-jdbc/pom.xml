@@ -6,6 +6,7 @@
         <groupId>org.gecko.reformer</groupId>
         <artifactId>platform</artifactId>
         <version>2021.10-SNAPSHOT</version>
+        <relativePath/>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -15,30 +16,26 @@
     <dependencies>
         <dependency>
             <groupId>org.gecko.reformer</groupId>
+            <artifactId>module-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.gecko.reformer</groupId>
             <artifactId>module-feign</artifactId>
-            <version>2021.10-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.gecko.reformer</groupId>
             <artifactId>module-data-rule</artifactId>
-            <version>2021.10-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.gecko.reformer</groupId>
             <artifactId>module-swagger</artifactId>
-            <version>2021.10-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.gecko.reformer</groupId>
             <artifactId>module-shardingsphere</artifactId>
-            <version>2021.10-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
@@ -56,5 +53,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

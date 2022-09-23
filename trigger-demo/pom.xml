@@ -16,17 +16,14 @@
 <!--        <dependency>-->
 <!--            <groupId>org.gecko.reformer</groupId>-->
 <!--            <artifactId>module-web</artifactId>-->
-<!--            <version>2021.10-SNAPSHOT</version>-->
 <!--        </dependency>-->
 <!--        <dependency>-->
 <!--            <groupId>org.gecko.reformer</groupId>-->
 <!--            <artifactId>module-swagger</artifactId>-->
-<!--            <version>2021.10-SNAPSHOT</version>-->
 <!--        </dependency>-->
         <dependency>
             <groupId>org.gecko.reformer</groupId>
             <artifactId>module-service</artifactId>
-            <version>2021.10-SNAPSHOT</version>
         </dependency>
 
         <dependency>

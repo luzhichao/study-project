@@ -16,22 +16,15 @@
     <dependencies>
         <dependency>
             <groupId>org.gecko.reformer</groupId>
-            <artifactId>module-web</artifactId>
+            <artifactId>module-service</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.gecko.reformer</groupId>
             <artifactId>module-feign</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.gecko.reformer</groupId>
             <artifactId>module-data-rule</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.gecko.reformer</groupId>
-            <artifactId>module-swagger</artifactId>
         </dependency>
         <dependency>
             <groupId>org.gecko.reformer</groupId>

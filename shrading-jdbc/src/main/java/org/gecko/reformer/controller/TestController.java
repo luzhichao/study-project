@@ -2,16 +2,20 @@ package org.gecko.reformer.controller;
 
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.google.common.collect.Lists;
-import org.gecko.reformer.annotation.WebController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.gecko.reformer.annotation.WebController;
 import org.gecko.reformer.contexts.DataRuleContext;
+import org.gecko.reformer.dto.VehicleDTO;
 import org.gecko.reformer.entity.User;
+import org.gecko.reformer.entity.VehicleRealLocation;
 import org.gecko.reformer.mapper.UserMapper;
+import org.gecko.reformer.mapper.VehicleRealLocationMapper;
 import org.gecko.reformer.util.DateUtils;
 import org.gecko.reformer.vo.Result;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
@@ -34,6 +38,9 @@ public class TestController {
     @Resource
     private UserMapper userMapper;
 
+    @Resource
+    private VehicleRealLocationMapper vehicleRealLocationMapper;
+
     @ApiOperation("test")
     @PostMapping("/test")
     public Result<String> getDateTypeDown() {
@@ -44,6 +51,28 @@ public class TestController {
                 .between(User::getBirthday, one, two)
                 .list();
         list.forEach(user -> log.info("{}", user));
+        return Result.success();
+    }
+
+    @ApiOperation("test1")
+    @PostMapping("/test1")
+    public Result<String> test1(@RequestBody VehicleDTO dto) {
+        DataRuleContext.setDataRules(Lists.newArrayList("123"));
+        List<VehicleRealLocation> list = new LambdaQueryChainWrapper<>(vehicleRealLocationMapper)
+                .between(VehicleRealLocation::getDateTime, dto.getStartTime(), dto.getEndTime())
+                .list();
+        list.forEach(d -> log.info("{}", d));
+        return Result.success();
+    }
+
+    @ApiOperation("test2")
+    @PostMapping("/test2")
+    public Result<String> test2(@RequestBody VehicleDTO dto) {
+        DataRuleContext.setDataRules(Lists.newArrayList("123"));
+        List<VehicleRealLocation> list = new LambdaQueryChainWrapper<>(vehicleRealLocationMapper)
+                .eq(VehicleRealLocation::getDateTime, dto.getStartTime())
+                .list();
+        list.forEach(d -> log.info("{}", d));
         return Result.success();
     }
 }

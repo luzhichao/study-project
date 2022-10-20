@@ -2,6 +2,7 @@ package org.gecko.reformer.job;
 
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.gecko.reformer.quartz.ReformerScheduleJob;
 import org.quartz.JobExecutionContext;
 import org.quartz.TriggerKey;
 import org.springframework.stereotype.Component;

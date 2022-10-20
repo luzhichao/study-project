@@ -3,7 +3,7 @@ package org.gecko.reformer.job;
 import lombok.extern.slf4j.Slf4j;
 import org.gecko.reformer.constant.JobConstants;
 import org.gecko.reformer.exception.CustomException;
-import org.gecko.reformer.job.annotations.ReformerJob;
+import org.gecko.reformer.annotations.ReformerJob;
 import org.springframework.stereotype.Component;
 
 /**

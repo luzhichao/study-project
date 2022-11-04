@@ -3,47 +3,54 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>org.gecko.reformer</groupId>
+        <groupId>com.reformer</groupId>
         <artifactId>platform</artifactId>
-        <version>2021.10-SNAPSHOT</version>
+        <version>1.1.2-SNAPSHOT</version>
         <relativePath/>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.gecko.reformer</groupId>
-    <artifactId>design</artifactId>
+    <artifactId>trigger-demo2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
-            <groupId>org.gecko.reformer</groupId>
-            <artifactId>common-base</artifactId>
-            <version>2021.10-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.gecko.reformer</groupId>
-            <artifactId>common-exception</artifactId>
-            <version>2021.10-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.gecko.reformer</groupId>
-            <artifactId>common-log</artifactId>
-            <version>2021.10-SNAPSHOT</version>
+            <groupId>com.reformer</groupId>
+            <artifactId>dictionary-api</artifactId>
+            <version>1.1.3-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.reformer</groupId>
+            <artifactId>module-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
+            <groupId>com.reformer</groupId>
+            <artifactId>module-job</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.reformer</groupId>
+            <artifactId>module-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.reformer</groupId>
+            <artifactId>module-feign</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

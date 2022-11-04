@@ -6,6 +6,7 @@
         <groupId>org.gecko.reformer</groupId>
         <artifactId>platform.modules</artifactId>
         <version>2021.10-SNAPSHOT</version>
+        <relativePath/>
     </parent>
 
     <groupId>org.gecko.reformer</groupId>

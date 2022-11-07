@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.reformer.pg.mapper.UserMapper">
+    <select id="listDeptUserByOrgIds" resultType="com.reformer.pg.eo.UserDeptEO">
+        SELECT tu.id AS id,
+               tu.username,
+               tu.real_name,
+               tu.phone,
+               tu.org_id,
+               tu.sex,
+               tu.avatar,
+               tu.sys_user,
+               tu.office_phone,
+               tu.post,
+               tu.card
+        FROM t_user tu
+        WHERE tu.del_flag = 0
+          AND tu.org_id = #{orgId,jdbcType=VARCHAR}
+    </select>
+    <select id="pageUserByCondition" resultType="com.reformer.pg.eo.UserPageResEO">
+        SELECT DISTINCT tu.id    AS id,
+                        tu.username,
+                        tu.real_name,
+                        tu.org_id,
+                        tor.name AS orgName,
+                        tu.avatar,
+                        tu.sys_user,
+                        tu.status,
+                        tu.phone,
+                        tu.office_phone,
+                        tu.post,
+                        tu.create_user,
+                        tu.update_time
+        FROM t_user tu
+                 LEFT JOIN t_user_dept tud ON tud.user_id = tu.id
+                 LEFT JOIN t_organization tor ON tu.org_id = tor.id
+        <where>
+            tu.del_flag = 0
+              AND tud.del_flag = 0
+              AND tor.del_flag = 0
+            <if test="query.orgIds != null and query.orgIds.size() != 0">
+                AND tud.dept_id IN
+                <foreach collection="query.orgIds" item="orgId" open="(" separator="," close=")">
+                    #{orgId,jdbcType=VARCHAR}
+                </foreach>
+            </if>
+            <if test="query.name != null and query.name != ''">
+                AND (tu.username LIKE CONCAT('%', #{query.name,jdbcType=VARCHAR}, '%')
+                    OR tu.real_name LIKE CONCAT('%', #{query.name,jdbcType=VARCHAR}, '%'))
+            </if>
+        </where>
+        ORDER BY tu.update_time DESC
+    </select>
+
+    <select id="listUserByRoleIds" resultType="com.reformer.pg.eo.BaseUserEO">
+        SELECT tu.id,
+               tu.real_name,
+               tu.username,
+               tu.email,
+               tu.phone,
+               tu.org_id,
+               tu.sex,
+               tu.avatar,
+               tu.sys_user,
+               tu.office_phone,
+               tu.post,
+               tu.card,
+               tu.birth_day,
+               tu.nation,
+               tu.political_status,
+               tu.emergency_person,
+               tu.emergency_phone,
+               tu.location,
+               tu.address,
+               tu.status
+        FROM t_user tu
+                 LEFT JOIN t_user_role tur ON tu.id = tur.user_id
+        WHERE tur.del_flag = 0
+          AND tu.del_flag = 0
+        <if test="roleIds != null and roleIds.size() != 0">
+            AND tur.role_id IN
+            <foreach collection="roleIds" item="roleId" open="(" separator="," close=")">
+                #{roleId,jdbcType=VARCHAR}
+            </foreach>
+        </if>
+    </select>
+</mapper>

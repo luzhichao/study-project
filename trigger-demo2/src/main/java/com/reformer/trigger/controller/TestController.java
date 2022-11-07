@@ -1,12 +1,13 @@
-package com.reformer.controller;
+package com.reformer.trigger.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.reformer.annotation.WebController;
-import com.reformer.job.TestJob;
 import com.reformer.job.engine.ScheduleJobEngine;
 import com.reformer.job.pojo.CronScheduleJobManyDO;
 import com.reformer.job.pojo.CronScheduleJobSingleDO;
 import com.reformer.job.pojo.SimpleScheduleJobDO;
+import com.reformer.trigger.dto.JobDTO;
+import com.reformer.trigger.job.TestJob;
 import com.reformer.vo.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -50,9 +51,9 @@ public class TestController {
     }
 
     @SneakyThrows
-    @ApiOperation("testCronManyJonCreate")
-    @PostMapping("/testCronManyJonCreate")
-    public Result<String> testCronManyJonCreate(@RequestBody JobDTO dto) {
+    @ApiOperation("testCronManyJobCreate")
+    @PostMapping("/testCronManyJobCreate")
+    public Result<String> testCronManyJobCreate(@RequestBody JobDTO dto) {
         final CronScheduleJobManyDO jobDTO = BeanUtil.copyProperties(dto, CronScheduleJobManyDO.class);
         ScheduleJobEngine.createCronManyJob(jobDTO, job);
         return Result.success();

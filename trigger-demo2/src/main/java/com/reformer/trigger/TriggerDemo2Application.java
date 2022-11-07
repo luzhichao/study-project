@@ -1,4 +1,4 @@
-package com.reformer;
+package com.reformer.trigger;
 
 import com.reformer.annotation.ReformerApplication;
 import org.springframework.boot.SpringApplication;

@@ -50,9 +50,9 @@ public class TestController {
     }
 
     @SneakyThrows
-    @ApiOperation("testCronManyJonCreate")
-    @PostMapping("/testCronManyJonCreate")
-    public Result<String> testCronManyJonCreate(@RequestBody JobDTO dto) {
+    @ApiOperation("testCronManyJobCreate")
+    @PostMapping("/testCronManyJobCreate")
+    public Result<String> testCronManyJobCreate(@RequestBody JobDTO dto) {
         final CronScheduleJobManyDO jobDTO = BeanUtil.copyProperties(dto, CronScheduleJobManyDO.class);
         ScheduleJobEngine.createCronManyJob(jobDTO, job);
         return Result.success();

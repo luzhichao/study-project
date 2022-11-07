@@ -1,4 +1,4 @@
-package com.reformer.feign;
+package com.reformer.trigger.feign;
 
 import com.reformer.dictionary.api.feign.DictionaryAPI;
 import org.springframework.cloud.openfeign.FeignClient;

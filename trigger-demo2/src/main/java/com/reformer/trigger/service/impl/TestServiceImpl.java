@@ -1,6 +1,6 @@
-package com.reformer.service.impl;
+package com.reformer.trigger.service.impl;
 
-import com.reformer.service.ITestService;
+import com.reformer.trigger.service.ITestService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

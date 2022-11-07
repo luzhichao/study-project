@@ -1,11 +1,10 @@
-package com.reformer.feign;
+package com.reformer.trigger.feign;
 
 import com.reformer.dictionary.api.dto.ItemDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,7 +13,7 @@ import java.util.List;
  **/
 @Slf4j
 @Component
-public class FeignUtils implements Serializable {
+public class FeignUtils {
 
     @Resource
     private DictTagFeign dictTagFeign;

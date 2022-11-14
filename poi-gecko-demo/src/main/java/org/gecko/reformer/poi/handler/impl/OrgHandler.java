@@ -3,7 +3,7 @@ package org.gecko.reformer.poi.handler.impl;
 import com.google.common.collect.Lists;
 import org.gecko.reformer.excel.pojo.LookupParam;
 import org.gecko.reformer.handler.IColHandler;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * @version 1.1.2
  * @date 2022-11-10
  **/
-@Service
+@Component
 public class OrgHandler implements IColHandler {
 
     @Override

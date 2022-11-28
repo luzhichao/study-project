@@ -4,6 +4,7 @@ import cn.afterturn.easypoi.excel.ExcelImportUtil;
 import cn.afterturn.easypoi.excel.entity.ExportParams;
 import cn.afterturn.easypoi.excel.entity.ImportParams;
 import cn.afterturn.easypoi.excel.entity.enmus.ExcelType;
+import cn.hutool.core.util.StrUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
@@ -15,6 +16,7 @@ import org.gecko.reformer.poi.handler.impl.SensorImportHandler;
 import org.gecko.reformer.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
@@ -41,19 +43,19 @@ public class TestController {
     @SneakyThrows
     @ApiOperation("test1")
     @PostMapping("/test1")
-    public void test1(HttpServletResponse response) {
+    public void test1(HttpServletResponse response, @RequestBody String fileName) {
         final ExportParams exportParams = new ExportParams();
         exportParams.setType(ExcelType.XSSF);
-        ExcelUtils.exportTemplate(exportParams, "test1.aa", SensorImportDTO.class, null, response);
+        ExcelUtils.exportTemplate(exportParams, StrUtil.blankToDefault(fileName, "test1"), SensorImportDTO.class, null, response);
     }
 
     @SneakyThrows
     @ApiOperation("test2")
     @PostMapping("/test2")
-    public void test2(HttpServletResponse response) {
+    public void test2(HttpServletResponse response, @RequestBody String fileName) {
         final ExportParams exportParams = new ExportParams();
         exportParams.setType(ExcelType.HSSF);
-        ExcelUtils.exportTemplate(exportParams, "test2.bb", SensorImportDTO.class, null, response);
+        ExcelUtils.exportTemplate(exportParams, StrUtil.blankToDefault(fileName, "test2"), SensorImportDTO.class, null, response);
     }
 
     //@SneakyThrows

@@ -8,6 +8,7 @@ import org.gecko.reformer.constant.DataFormula;
 import org.gecko.reformer.poi.handler.impl.CategoryHandler;
 import org.gecko.reformer.poi.handler.impl.OrgHandler;
 import org.gecko.reformer.poi.handler.impl.RegionHandler;
+import org.gecko.reformer.poi.handler.impl.StatusHandler;
 
 import java.io.Serializable;
 
@@ -19,7 +20,7 @@ import java.io.Serializable;
  * @date 2022-11-14
  **/
 @Data
-@ExcelHandler(firstRow = 3, lastRow = 1234)
+@ExcelHandler(lastRow = 1234)
 public class SensorImportDTO implements Serializable {
 
     @Excel(name = "设备编号(*)", width = 20, orderNum = "1")
@@ -32,11 +33,12 @@ public class SensorImportDTO implements Serializable {
     @ColHandler(colNum = 2, type = DataFormula.DROPDOWN, service = CategoryHandler.class)
     private String deviceCategoryName;
 
-    @Excel(name = "设备类型KEY", width = 20, /*isColumnHidden = true,*/ orderNum = "3")
+    @Excel(name = "设备类型KEY", width = 20, orderNum = "3")
     @ColHandler(colNum = 3, sourceColNum = 2, type = DataFormula.LOOKUP, service = CategoryHandler.class)
     private String deviceCategory;
 
     @Excel(name = "设备状态(*)", width = 15, orderNum = "4")
+    @ColHandler(colNum = 4, type = DataFormula.DROPDOWN, service = StatusHandler.class)
     private String statusName;
 
     @Excel(name = "设备状态KEY", width = 10, isColumnHidden = true, orderNum = "5")

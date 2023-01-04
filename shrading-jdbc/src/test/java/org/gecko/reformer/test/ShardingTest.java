@@ -1,4 +1,4 @@
-package org.gecko.reformer.test;
+package org.gecko.reformer.feign;
 
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.util.RandomUtil;

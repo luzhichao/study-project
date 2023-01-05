@@ -1,0 +1,18 @@
+isDebugger: true
+
+spring:
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      # nacos服务注册与发现
+      discovery:
+        weight: 0
+
+
+reformer:
+  log:
+    path: /Users/luzhichao/logs/
+  gecko:
+    log:
+      path: /Users/luzhichao/logs/

@@ -17,6 +17,11 @@
             <artifactId>processor-definition</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.gecko.reformer</groupId>
+            <artifactId>module-web</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

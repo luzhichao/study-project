@@ -1,0 +1,18 @@
+spring:
+  application:
+    # 服务名
+    name: authentication
+  cloud:
+    nacos:
+      # nacos配置中心
+      config:
+        server-addr: 192.168.11.103:30848
+        namespace: reformer
+        file-extension: yaml
+        extension-configs:
+          - data-id: redis-common.yaml
+            refresh: true
+      # nacos服务注册与发现
+      discovery:
+        server-addr: 192.168.11.103:30848
+        namespace: reformer

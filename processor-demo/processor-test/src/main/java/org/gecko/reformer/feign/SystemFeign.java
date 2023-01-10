@@ -1,7 +1,7 @@
 package org.gecko.reformer.feign;
 
-import org.gecko.reformer.annotation.FeignClient;
 import org.gecko.reformer.annotation.AutoFeignFallback;
+import org.gecko.reformer.annotation.FeignClient;
 import org.gecko.reformer.api.SystemAPI;
 import org.gecko.reformer.api.SystemOrgAPI;
 

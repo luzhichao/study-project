@@ -11,6 +11,11 @@
     <artifactId>processor-definition</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>org.gecko.reformer</groupId>
+            <artifactId>module-web</artifactId>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.google.auto.service/auto-service -->
         <dependency>
             <groupId>com.google.auto.service</groupId>

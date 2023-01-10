@@ -13,6 +13,6 @@ import java.lang.annotation.Target;
  * @date 2023-01-03
  **/
 @Target({ElementType.TYPE})
-@Retention(RetentionPolicy.SOURCE)
+@Retention(RetentionPolicy.CLASS)
 public @interface FeignAPI {
 }

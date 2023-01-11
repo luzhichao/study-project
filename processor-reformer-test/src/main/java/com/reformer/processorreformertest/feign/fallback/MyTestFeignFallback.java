@@ -22,7 +22,7 @@ import java.util.List;
  **/
 @Slf4j
 @Component
-public class TestFeignFallback implements TestFeign {
+public class MyTestFeignFallback implements TestFeign {
     @Override
     public List<UserDTO> queryUserByRoleIds(@RequestBody()
                                                     List<String> roleIds) {

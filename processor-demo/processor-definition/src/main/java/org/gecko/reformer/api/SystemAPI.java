@@ -1,6 +1,7 @@
 package org.gecko.reformer.api;
 
 
+import cn.hutool.core.util.StrUtil;
 import org.gecko.reformer.annotation.FeignAPI;
 import org.gecko.reformer.dto.OrgTestDTO;
 import org.gecko.reformer.exception.CustomException;
@@ -21,6 +22,13 @@ import java.util.Set;
  **/
 @FeignAPI
 public interface SystemAPI {
+
+    String aa = "aa";
+
+    @PostMapping("/feign/system/test0")
+    default String test0(String str){
+        return null;
+    }
 
     @PostMapping("/feign/system/test")
     List<Integer> test(@RequestBody OrgTestDTO dto) throws CustomException, RuntimeException;

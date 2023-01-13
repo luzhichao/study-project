@@ -1,7 +1,7 @@
 spring:
   application:
     # 服务名
-    name: transport
+    name: authentication
   cloud:
     nacos:
       # nacos配置中心

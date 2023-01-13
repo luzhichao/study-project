@@ -1,5 +1,7 @@
 package com.reformer.processorreformertest.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.reformer.annotation.WebController;
 import com.reformer.processorreformertest.dto.QueryDTO;
 import com.reformer.processorreformertest.feign.TestFeign;
@@ -25,15 +27,24 @@ import javax.annotation.Resource;
 @RequestMapping("/api/test-controller/")
 public class TestController {
 
-        @Resource
-        private TestFeign testFeign;
+    @Resource
+    private TestFeign testFeign;
 
-        @PostMapping("/test")
-        @ApiOperation(value = "测试")
-        public Result test(@RequestBody QueryDTO dto) {
+    @PostMapping("/test0")
+    @ApiOperation("test0")
+    public Result test0(@RequestBody QueryDTO dto) {
+        final UserDTO result = testFeign.queryUserById(dto.getId());
+        return Result.success(result);
+    }
 
-            final UserDTO result = testFeign.queryUserById(dto.getId());
+    @SentinelResource(value = "my-test")
+    @ApiOperation("test1")
+    @PostMapping("/test1")
+    public Result<String> test1() {
+        return Result.success("123456");
+    }
 
-            return Result.success(result);
-        }
+    public Result<String> testBlockHandler(BlockException e) {
+        return Result.error("操作过于频繁");
+    }
 }

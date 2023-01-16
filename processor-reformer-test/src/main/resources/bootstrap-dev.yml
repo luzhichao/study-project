@@ -7,12 +7,14 @@ spring:
       # nacos配置中心
       config:
         server-addr: 192.168.11.103:30848
-        namespace: reformer
+        namespace: whtc
         file-extension: yaml
         extension-configs:
           - data-id: redis-common.yaml
             refresh: true
+          - data-id: sentinel-service-common.yml
+            refresh: true
       # nacos服务注册与发现
       discovery:
         server-addr: 192.168.11.103:30848
-        namespace: reformer
+        namespace: whtc

@@ -1,8 +1,8 @@
 package com.reformer.processorreformertest.feign;
 
 import com.reformer.annotation.AutoFeignFallback;
+import com.reformer.system.api.feign.LoginAPI;
 import com.reformer.system.api.feign.SystemAPI;
-import com.reformer.system.api.feign.SystemUserAPI;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**
@@ -14,5 +14,5 @@ import org.springframework.cloud.openfeign.FeignClient;
  **/
 @AutoFeignFallback
 @FeignClient(name = "system", contextId = "testFeign", url = "localhost:8081")
-public interface TestFeign extends SystemAPI, SystemUserAPI {
+public interface TestFeign extends SystemAPI, LoginAPI {
 }

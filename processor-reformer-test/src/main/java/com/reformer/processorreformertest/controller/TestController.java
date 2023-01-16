@@ -1,11 +1,12 @@
 package com.reformer.processorreformertest.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.reformer.annotation.WebController;
+import com.reformer.processorreformertest.controller.block.TestBlockHandler;
 import com.reformer.processorreformertest.dto.QueryDTO;
 import com.reformer.processorreformertest.feign.TestFeign;
 import com.reformer.system.api.dto.UserDTO;
+import com.reformer.system.api.dto.WechatAppletAuthDTO;
 import com.reformer.vo.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,18 +34,21 @@ public class TestController {
     @PostMapping("/test0")
     @ApiOperation("test0")
     public Result test0(@RequestBody QueryDTO dto) {
+        WechatAppletAuthDTO d = new WechatAppletAuthDTO();
+        testFeign.saveWechatAppletAuth(d);
+
         final UserDTO result = testFeign.queryUserById(dto.getId());
         return Result.success(result);
     }
 
-    @SentinelResource(value = "my-test")
+    @SentinelResource(value = "my-test", blockHandlerClass = TestBlockHandler.class, blockHandler = "testBlockHandler")
     @ApiOperation("test1")
     @PostMapping("/test1")
     public Result<String> test1() {
         return Result.success("123456");
     }
 
-    public Result<String> testBlockHandler(BlockException e) {
-        return Result.error("操作过于频繁");
-    }
+    //public Result<String> testBlockHandler(BlockException e) {
+    //    return Result.error("操作过于频繁");
+    //}
 }

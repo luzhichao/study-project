@@ -1,10 +1,8 @@
 package com.reformer.processorreformertest.feign.fallback;
 
+import com.reformer.exception.CustomException;
 import com.reformer.processorreformertest.feign.TestFeign;
-import com.reformer.system.api.dto.OrgDTO;
-import com.reformer.system.api.dto.OrgReqDTO;
-import com.reformer.system.api.dto.QueryOrgDTO;
-import com.reformer.system.api.dto.UserDTO;
+import com.reformer.system.api.dto.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,12 +21,6 @@ import java.util.List;
 @Slf4j
 @Component
 public class MyTestFeignFallback implements TestFeign {
-    @Override
-    public List<UserDTO> queryUserByRoleIds(@RequestBody()
-                                                    List<String> roleIds) {
-        log.error("===自定义===服务降级===");
-        return new ArrayList<>();
-    }
 
 
     @Override
@@ -119,5 +111,20 @@ public class MyTestFeignFallback implements TestFeign {
     public List<OrgDTO> findOrgList(OrgReqDTO dto) {
         log.error("===自定义===服务降级===");
         return new ArrayList<>();
+    }
+
+    @Override
+    public LoginUserDTO toLogin(String str) {
+        return null;
+    }
+
+    @Override
+    public LoginUserDTO getLoginUserDetail(String userId) {
+        return null;
+    }
+
+    @Override
+    public String saveWechatAppletAuth(WechatAppletAuthDTO dto) {
+        throw new CustomException("");
     }
 }

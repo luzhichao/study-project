@@ -1,6 +1,6 @@
 package org.gecko.reformer.test;
 
-import org.gecko.reformer.dto.OrgTestDTO;
+import org.gecko.reformer.dto.MyOrgTestDTO;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -17,7 +17,7 @@ import java.util.Set;
 public class Test {
 
     public void test(){
-        OrgTestDTO org = new OrgTestDTO();
+        MyOrgTestDTO org = new MyOrgTestDTO();
         Set<String> set = new HashSet<>();
         Map<String, String> map = new HashMap<>();
     }

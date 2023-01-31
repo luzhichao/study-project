@@ -1,7 +1,7 @@
 package org.gecko.reformer.api;
 
 import org.gecko.reformer.annotation.FeignAPI;
-import org.gecko.reformer.dto.OrgTestDTO;
+import org.gecko.reformer.dto.MyOrgTestDTO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -21,22 +21,22 @@ import java.util.Set;
 public interface SystemOrgAPI {
 
     @PostMapping("/feign/system2/listOrg2")
-    List<OrgTestDTO> listOrg2(@RequestBody Collection<String> orgId);
+    List<MyOrgTestDTO> listOrg2(@RequestBody Collection<String> orgId);
 
     @PostMapping("/feign/system2/saveTest2")
-    void saveTest2(@RequestBody OrgTestDTO dto);
+    void saveTest2(@RequestBody MyOrgTestDTO dto);
 
     @PostMapping("/feign/system2/getById2")
-    OrgTestDTO getById2(@RequestBody String id);
+    MyOrgTestDTO getById2(@RequestBody String id);
 
     @PostMapping("/feign/system2/getMapByIds2")
-    Map<String, OrgTestDTO> getMapByIds2(@RequestBody Collection<String> ids);
+    Map<String, MyOrgTestDTO> getMapByIds2(@RequestBody Collection<String> ids);
 
     @PostMapping("/feign/system2/queryOrg2")
-    Set<OrgTestDTO> queryOrg2();
+    Set<MyOrgTestDTO> queryOrg2();
 
     @PostMapping("/feign/system2/orgUpdate2")
-    OrgTestDTO orgUpdate2(@RequestBody OrgTestDTO dto);
+    MyOrgTestDTO orgUpdate2(@RequestBody MyOrgTestDTO dto);
 
 
 }

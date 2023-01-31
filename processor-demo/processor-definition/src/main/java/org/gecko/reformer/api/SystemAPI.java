@@ -1,9 +1,8 @@
 package org.gecko.reformer.api;
 
 
-import cn.hutool.core.util.StrUtil;
 import org.gecko.reformer.annotation.FeignAPI;
-import org.gecko.reformer.dto.OrgTestDTO;
+import org.gecko.reformer.dto.MyOrgTestDTO;
 import org.gecko.reformer.exception.CustomException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,25 +30,25 @@ public interface SystemAPI {
     }
 
     @PostMapping("/feign/system/test")
-    List<Integer> test(@RequestBody OrgTestDTO dto) throws CustomException, RuntimeException;
+    List<Integer> test(@RequestBody MyOrgTestDTO dto) throws CustomException, RuntimeException;
 
     @PostMapping("/feign/system/listOrg")
-    List<OrgTestDTO> listOrg(@RequestBody Collection<String> orgId) throws CustomException;
+    List<MyOrgTestDTO> listOrg(@RequestBody Collection<String> orgId) throws CustomException;
 
     @PostMapping("/feign/system/saveTest")
-    void saveTest(@RequestBody OrgTestDTO dto);
+    void saveTest(@RequestBody MyOrgTestDTO dto);
 
     @PostMapping("/feign/system/getById")
-    OrgTestDTO getById(@RequestBody String id);
+    MyOrgTestDTO getById(@RequestBody String id);
 
     @PostMapping("/feign/system/getMapByIds")
-    Map<String, OrgTestDTO> getMapByIds(@RequestBody Collection<String> ids);
+    Map<String, MyOrgTestDTO> getMapByIds(@RequestBody Collection<String> ids);
 
     @PostMapping("/feign/system/queryOrg")
-    Set<OrgTestDTO> queryOrg();
+    Set<MyOrgTestDTO> queryOrg();
 
     @PostMapping("/feign/system/orgUpdate")
-    OrgTestDTO orgUpdate(@RequestBody OrgTestDTO dto);
+    MyOrgTestDTO orgUpdate(@RequestBody MyOrgTestDTO dto);
 
     @PostMapping("/feign/system/getNameById")
     String getNameById(@RequestBody String id);

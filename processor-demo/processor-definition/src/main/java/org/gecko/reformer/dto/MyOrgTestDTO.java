@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  **/
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class OrgTestDTO extends BaseTestDTO {
+public class MyOrgTestDTO extends MyBaseTestDTO {
     private static final long serialVersionUID = -5398553214549903163L;
 
     private String parentId;

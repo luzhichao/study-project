@@ -1,7 +1,7 @@
 package org.gecko.reformer.feign;
 
 import org.gecko.reformer.annotation.AutoFeignFallback;
-import org.gecko.reformer.annotation.FeignClient;
+import org.gecko.reformer.annotation.MyFeignClient;
 import org.gecko.reformer.api.SystemAPI;
 import org.gecko.reformer.api.SystemOrgAPI;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
  * @date 2023-01-03
  **/
 @AutoFeignFallback
-@FeignClient(name = "system", contextId = "SystemFeign")
+@MyFeignClient(name = "system", contextId = "SystemFeign")
 public interface SystemFeign extends SystemAPI, SystemOrgAPI {
 
     String myaa = "myaa";

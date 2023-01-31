@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  * @version 1.1.2
  * @date 2023-01-04
  **/
-public class BaseTestDTO implements Serializable {
+public class MyBaseTestDTO implements Serializable {
     private static final long serialVersionUID = -6663287734846142794L;
 
     private String id;

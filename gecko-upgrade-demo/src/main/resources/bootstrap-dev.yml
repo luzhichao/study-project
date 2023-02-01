@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: resource
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.11.103:30848
+        namespace: whtc
+        file-extension: yaml
+        shared-configs:
+          - data-id: mysql-common.yaml
+            refresh: true
+      discovery:
+        server-addr: 192.168.11.103:30848
+        namespace: whtc

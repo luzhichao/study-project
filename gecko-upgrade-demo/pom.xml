@@ -16,12 +16,6 @@
         <dependency>
             <groupId>org.gecko.reformer</groupId>
             <artifactId>module-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>pagehelper</artifactId>
-                    <groupId>com.github.pagehelper</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.gecko.reformer</groupId>
@@ -30,23 +24,11 @@
         <dependency>
             <groupId>org.gecko.reformer</groupId>
             <artifactId>module-service</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>pagehelper</artifactId>
-                    <groupId>com.github.pagehelper</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>org.gecko.reformer</groupId>
             <artifactId>module-feign</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>pagehelper</artifactId>
-                    <groupId>com.github.pagehelper</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>

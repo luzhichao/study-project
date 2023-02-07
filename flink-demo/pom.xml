@@ -3,9 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>org.gecko.reformer</groupId>
+        <groupId>com.reformer</groupId>
         <artifactId>platform</artifactId>
-        <version>2021.10-SNAPSHOT</version>
+        <version>1.1.2-SNAPSHOT</version>
         <relativePath/>
     </parent>
 
@@ -13,14 +13,9 @@
     <artifactId>flink-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
-        <flink.version>1.16.0</flink.version>
-        <scala.binary.version>2.12</scala.binary.version>
-    </properties>
-
     <dependencies>
         <dependency>
-            <groupId>org.gecko.reformer</groupId>
+            <groupId>com.reformer</groupId>
             <artifactId>module-web</artifactId>
             <exclusions>
                 <exclusion>
@@ -30,71 +25,88 @@
             </exclusions>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-java</artifactId>
-            <version>1.16.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-streaming-java</artifactId>
-            <version>1.16.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-clients</artifactId>
-            <version>1.16.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-jdbc</artifactId>
-            <version>1.16.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-kafka</artifactId>
-            <version>1.16.0</version>
-        </dependency>
-
+        <!-- ==================================cdc 2.3.0 + flink 1.15.*==不可行cdc2.3.0中com.mysql.cj.CharsetMapping.getStaticJavaEncodingForMysqlCharset==================================== -->
         <!--        <dependency>-->
-        <!--            <groupId>org.apache.flink</groupId>-->
-        <!--            <artifactId>flink-java</artifactId>-->
-        <!--            <version>1.13.0</version>-->
+        <!--            <groupId>com.ververica</groupId>-->
+        <!--            <artifactId>flink-connector-mysql-cdc</artifactId>-->
+        <!--            <version>2.3.0</version>-->
         <!--        </dependency>-->
         <!--        <dependency>-->
         <!--            <groupId>org.apache.flink</groupId>-->
         <!--            <artifactId>flink-streaming-java_2.11</artifactId>-->
-        <!--            <version>1.13.0</version>-->
+        <!--            <version>1.14.6</version>-->
         <!--        </dependency>-->
         <!--        <dependency>-->
         <!--            <groupId>org.apache.flink</groupId>-->
         <!--            <artifactId>flink-clients_2.11</artifactId>-->
-        <!--            <version>1.13.0</version>-->
+        <!--            <version>1.14.6</version>-->
         <!--        </dependency>-->
-
         <!--        <dependency>-->
         <!--            <groupId>org.apache.flink</groupId>-->
-        <!--            <artifactId>flink-streaming-scala_${scala.binary.version}</artifactId>-->
-        <!--            <version>${flink.version}</version>-->
+        <!--            <artifactId>flink-connector-kafka_2.11</artifactId>-->
+        <!--            <version>1.14.6</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.flink</groupId>-->
+        <!--            <artifactId>flink-table-common</artifactId>-->
+        <!--            <version>1.14.6</version>-->
         <!--        </dependency>-->
 
+        <!-- ==================================cdc 2.2.0 + flink 1.14.*==不可行guava版本冲突，org/apache/flink/shaded/guava30/com/google/common/collect/Lists==================================== -->
+        <!--        <dependency>-->
+        <!--            <groupId>com.ververica</groupId>-->
+        <!--            <artifactId>flink-connector-mysql-cdc</artifactId>-->
+        <!--            <version>2.2.0</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.flink</groupId>-->
+        <!--            <artifactId>flink-streaming-java_2.11</artifactId>-->
+        <!--            <version>1.14.0</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.flink</groupId>-->
+        <!--            <artifactId>flink-clients_2.11</artifactId>-->
+        <!--            <version>1.14.0</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.flink</groupId>-->
+        <!--            <artifactId>flink-connector-kafka_2.11</artifactId>-->
+        <!--            <version>1.14.0</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.flink</groupId>-->
+        <!--            <artifactId>flink-table-common</artifactId>-->
+        <!--            <version>1.14.0</version>-->
+        <!--        </dependency>-->
 
-        <!-- 引入日志管理相关依赖-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.slf4j</groupId>-->
-        <!--            <artifactId>slf4j-api</artifactId>-->
-        <!--            <version>${slf4j.version}</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.slf4j</groupId>-->
-        <!--            <artifactId>slf4j-log4j12</artifactId>-->
-        <!--            <version>${slf4j.version}</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.apache.logging.log4j</groupId>-->
-        <!--            <artifactId>log4j-to-slf4j</artifactId>-->
-        <!--            <version>2.14.0</version>-->
-        <!--        </dependency>-->
+        <!-- ==================================cdc 2.2.0 + flink 1.13.6==可行==================================== -->
+        <!-- ==================================cdc 2.2.0 + flink 1.14.6==不可行guava版本冲突，org/apache/flink/shaded/guava30/com/google/common/collect/Lists==================================== -->
+        <dependency>
+            <groupId>com.ververica</groupId>
+            <artifactId>flink-connector-mysql-cdc</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-streaming-java_2.11</artifactId>
+            <version>1.13.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-clients_2.11</artifactId>
+            <version>1.13.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-kafka_2.11</artifactId>
+            <version>1.13.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table-common</artifactId>
+            <version>1.13.6</version>
+        </dependency>
+
     </dependencies>
 
 
@@ -119,16 +131,6 @@
                     </execution>
                 </executions>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                <version>3.8.0</version>-->
-<!--                <configuration>-->
-<!--                    <source>${java.version}</source>-->
-<!--                    <target>${java.version}</target>-->
-<!--                    <encoding>UTF-8</encoding>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
         </plugins>
     </build>
 

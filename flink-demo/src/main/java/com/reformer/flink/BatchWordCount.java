@@ -1,4 +1,4 @@
-package org.gecko.reformer.ws;
+package com.reformer.flink;
 
 import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.ExecutionEnvironment;
@@ -20,7 +20,7 @@ public class BatchWordCount {
 
     public static void main(String[] args) throws Exception {
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
-        DataSource<String> lineDataSource = env.readTextFile("/Users/luzhichao/workspace/GitHub/study-project/FlinkDemo/input/words.txt");
+        DataSource<String> lineDataSource = env.readTextFile("/Users/luzhichao/workspace/GitHub/study-project/flink-demo/input/words.txt");
         FlatMapOperator<String, Tuple2<String, Integer>> wordAndOneTuple = lineDataSource.flatMap((String line, Collector<Tuple2<String, Integer>> out) -> {
             final String[] words = line.split(" ");
             for (String word : words) {
@@ -30,6 +30,8 @@ public class BatchWordCount {
 
         UnsortedGrouping<Tuple2<String, Integer>> wordAndOneTupleGroup = wordAndOneTuple.groupBy(0);
         AggregateOperator<Tuple2<String, Integer>> sum = wordAndOneTupleGroup.sum(1);
+
+
 
 
         sum.print();

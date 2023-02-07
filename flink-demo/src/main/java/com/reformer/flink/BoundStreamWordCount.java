@@ -1,9 +1,8 @@
-package org.gecko.reformer.ws;
+package com.reformer.flink;
 
 import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
-import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.util.Collector;
@@ -22,7 +21,7 @@ public class BoundStreamWordCount {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
 
-        final DataStreamSource<String> lineDss = env.readTextFile("/Users/luzhichao/workspace/GitHub/study-project/FlinkDemo/input/words.txt");
+        final DataStreamSource<String> lineDss = env.readTextFile("/Users/luzhichao/workspace/GitHub/study-project/flink-demo/input/words.txt");
 
         final SingleOutputStreamOperator<Tuple2<String, Integer>> sum = lineDss.flatMap((String line, Collector<Tuple2<String, Integer>> out) -> {
             final String[] words = line.split(" ");

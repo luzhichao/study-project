@@ -13,14 +13,16 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
+
+<!--        <dependency>-->
+<!--            <groupId>org.gecko.reformer</groupId>-->
+<!--            <artifactId>module-feign</artifactId>-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>org.gecko.reformer</groupId>
             <artifactId>module-web</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.gecko.reformer</groupId>-->
-<!--            <artifactId>module-service</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.gecko.reformer</groupId>
             <artifactId>module-poi</artifactId>

@@ -20,9 +20,9 @@ public class MySqlSourceExample {
                 // 不支持
                 //.startupOptions(StartupOptions.earliest())
                 // 执行初始快照，并继续读取最新的binlog
-                .startupOptions(StartupOptions.initial())
+                //.startupOptions(StartupOptions.initial())
                 // 读取最新的binlog
-                //.startupOptions(StartupOptions.latest())
+                .startupOptions(StartupOptions.latest())
                 // 不支持
                 //.startupOptions(StartupOptions.timestamp(1675735994502L))
                 .build();

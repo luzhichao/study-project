@@ -12,10 +12,9 @@ spring:
       discovery:
         weight: 0
 
-reformer:
-  log:
-    path: /Users/luzhichao/logs/
-  gecko:
-    log:
-      path: /Users/luzhichao/logs/
-
+#reformer:
+#  log:
+#    path: /Users/luzhichao/logs/
+#  gecko:
+#    log:
+#      path: /Users/luzhichao/logs/

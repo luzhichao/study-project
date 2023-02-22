@@ -19,10 +19,11 @@ import java.util.Map;
 public class UserChangedHandler2 implements IChangedHandler<Date, ChangeDTO> {
 
     @Override
-    public void exec(Date oldValue, Date newValue, ChangeDTO param) {
+    public void exec(Date oldValue, Date newValue, ChangeDTO param, String mark) {
         log.info("===DateHandler===>");
         log.info("oldValue===>{}", oldValue);
         log.info("newValue===>{}", newValue);
         log.info("param===>{}", param);
+        log.info("mark===>{}", mark);
     }
 }

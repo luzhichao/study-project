@@ -16,10 +16,11 @@ import org.springframework.stereotype.Component;
 public class UserChangedHandler implements IChangedHandler<String, ChangeDTO> {
 
     @Override
-    public void exec(String oldValue, String newValue, ChangeDTO param) {
+    public void exec(String oldValue, String newValue, ChangeDTO param, String mark) {
         log.info("===StringHandler===>");
         log.info("oldValue===>{}", oldValue);
         log.info("newValue===>{}", newValue);
         log.info("param===>{}", param);
+        log.info("mark===>{}", mark);
     }
 }

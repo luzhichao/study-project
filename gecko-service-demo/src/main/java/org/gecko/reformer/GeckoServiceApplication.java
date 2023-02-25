@@ -7,7 +7,7 @@ import org.springframework.boot.SpringApplication;
 
 @Slf4j
 @ReformerApplication
-@MapperScan("org.gecko.reformer.log.mapper")
+@MapperScan("org.gecko.reformer.**")
 public class GeckoServiceApplication {
 
     public static void main(String[] args) {

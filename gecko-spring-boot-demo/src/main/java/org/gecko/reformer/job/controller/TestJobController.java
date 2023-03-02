@@ -6,15 +6,16 @@ import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
 import org.gecko.reformer.annotation.WebController;
 import org.gecko.reformer.engine.ScheduleJobEngine;
+import org.gecko.reformer.job.job.TestTriggerJob;
 import org.gecko.reformer.pojo.CronScheduleJobManyDO;
-import org.gecko.reformer.job.job.TestJob;
 import org.gecko.reformer.pojo.CronScheduleJobSingleDO;
 import org.gecko.reformer.pojo.SimpleScheduleJobDO;
 import org.gecko.reformer.vo.Result;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.annotation.Resource;
 
 /**
  * test
@@ -28,8 +29,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/trigger/api/")
 public class TestJobController {
 
-    @Autowired
-    private TestJob job;
+    @Resource
+    private TestTriggerJob job;
 
     @SneakyThrows
     @ApiOperation("testSimpleJobCreate")

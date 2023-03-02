@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  **/
 @Slf4j
 @Component
-public class TestJob implements ReformerScheduleJob {
+public class TestTriggerJob implements ReformerScheduleJob {
 
     @Override
     public void run(JobExecutionContext context, Object param) {

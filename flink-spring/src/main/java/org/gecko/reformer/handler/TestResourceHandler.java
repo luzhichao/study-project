@@ -19,15 +19,15 @@ public class TestResourceHandler extends AbsMongoHandler<TestResourceModel> {
 
 
     @Override
-    public void insert(String id, TestResourceModel after) {
-        log.info("insert===id==={},===after==={}", id, after);
+    public void insert(String id, TestResourceModel doc) {
+        log.info("insert===id==={},===doc==={}", id, doc);
     }
 
     @Override
-    public void update(String id, UpdateMongoDTO dto, TestResourceModel after) {
+    public void update(String id, UpdateMongoDTO dto, TestResourceModel doc) {
         log.info("update===id==={}", id);
         log.info("update===dto==={}", dto);
-        log.info("update===after==={}", after);
+        log.info("update===doc==={}", doc);
         final SourceMongoDO source = getSource();
         log.info("source==={}", source);
     }

@@ -16,8 +16,6 @@ import java.util.Date;
 public class TestResourceModel implements Serializable {
     private static final long serialVersionUID = 9061117671113331987L;
 
-    //@JSONField(name = "_id")
-    //@JsonProperty("_id")
     private String id;
     private String tenantId;
     private int delFlag;

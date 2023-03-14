@@ -1,51 +1,47 @@
-package org.gecko.reformer.schema;
+package org.gecko.reformer.transform;
 
+import com.ververica.cdc.debezium.DebeziumDeserializationSchema;
 import io.debezium.data.Envelope;
-import lombok.extern.slf4j.Slf4j;
+import org.apache.flink.api.common.typeinfo.BasicTypeInfo;
+import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.util.Collector;
 import org.apache.kafka.connect.data.Field;
 import org.apache.kafka.connect.data.Schema;
 import org.apache.kafka.connect.data.Struct;
 import org.apache.kafka.connect.source.SourceRecord;
-import org.gecko.reformer.model.TestModel;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 自定义解析框架
+ * TODO
  *
  * @author LZC
  * @version 1.1.2
- * @date 2023-03-11
+ * @date 2023-03-07
  **/
-@Slf4j
-public class TestSchema extends BaseReformerDeserializationSchema<TestModel> {
-
-    private static final long serialVersionUID = 1L;
-
+public class CustomDebeziumDeserializer implements DebeziumDeserializationSchema<String> {
     @Override
-    public void deserialize(SourceRecord record, Collector<TestModel> out) throws Exception {
-        log.info("TestSchema#deserialize==={}", record);
-        TestModel tm = new TestModel();
+    public void deserialize(SourceRecord sourceRecord, Collector<String> collector) throws Exception {
+        Map<String, Object> parsedObject = new HashMap<>();
 
         // 注意，SourceRecord中并没有获取操作类型的方法。获取操作类型需要这么写
-        Envelope.Operation operation = Envelope.operationFor(record);
-        tm.setOperation(operation.toString());
+        Envelope.Operation operation = Envelope.operationFor(sourceRecord);
+        parsedObject.put("operation", operation.toString());
 
         // topic返回的内容为：mysql_binlog_source.dbName.tableName，即数据源.数据库名.表名
         // 按照业务使用要求解析即可
-        if (null != record.topic()) {
-            String[] splitTopic = record.topic().split("\\.");
+        if (null != sourceRecord.topic()) {
+            String[] splitTopic = sourceRecord.topic().split("\\.");
             if (splitTopic.length == 3) {
-                tm.setDatabase(splitTopic[1]);
-                tm.setTable(splitTopic[2]);
+                parsedObject.put("database", splitTopic[1]);
+                parsedObject.put("table", splitTopic[2]);
             }
         }
 
         // value返回sourceRecord中携带的数据，它是一个Struct类型
         // Struct的类型为org.apache.kafka.connect.data.Struct
-        Struct value = (Struct) record.value();
+        Struct value = (Struct) sourceRecord.value();
         // 变更前后的数据位于value这个Struct中，名称分别为before和after
         Struct before = value.getStruct("before");
         Struct after = value.getStruct("after");
@@ -58,7 +54,7 @@ public class TestSchema extends BaseReformerDeserializationSchema<TestModel> {
             for (Field field : beforeSchema.fields()) {
                 beforeMap.put(field.name(), before.get(field));
             }
-            tm.setBefore(beforeMap);
+            parsedObject.put("before", beforeMap);
         }
 
         if (null != after) {
@@ -67,9 +63,16 @@ public class TestSchema extends BaseReformerDeserializationSchema<TestModel> {
             for (Field field : afterSchema.fields()) {
                 afterMap.put(field.name(), after.get(field));
             }
-            tm.setAfter(afterMap);
+
+            parsedObject.put("after", afterMap);
         }
+
         // 调用collector的collect方法，将转换后的数据发往下游
-        out.collect(tm);
+        collector.collect(parsedObject.toString());
+    }
+
+    @Override
+    public TypeInformation<String> getProducedType() {
+        return BasicTypeInfo.STRING_TYPE_INFO;
     }
 }

@@ -52,6 +52,11 @@
             <artifactId>easyexcel</artifactId>
             <version>3.1.1</version>
         </dependency>
+        <!-- PostgresSQL连接依赖 -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

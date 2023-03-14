@@ -1,4 +1,4 @@
-package com.reformer.flink;
+package org.gecko.reformer.example;
 
 import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.tuple.Tuple2;

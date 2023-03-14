@@ -1,15 +1,14 @@
 package org.gecko.reformer.example;
 
+import com.alibaba.nacos.shaded.com.google.common.collect.Sets;
 import com.ververica.cdc.connectors.mongodb.MongoDBSource;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
 import org.gecko.reformer.constant.OpErrorEnum;
 import org.gecko.reformer.dto.ReformerFlinkMongoDTO;
-import org.gecko.reformer.schema.MongodbDebeziumDeserializationSchema;
+import org.gecko.reformer.transform.MongodbDebeziumDeserializationSchema;
 import org.gecko.reformer.util.FlinkUtils;
-
-import java.util.HashSet;
 
 public class MongodbSourceExample {
 
@@ -20,18 +19,14 @@ public class MongodbSourceExample {
         dto.setHosts("192.168.11.100:7004");
         dto.setUsername("reformer");
         dto.setPassword("123456");
-        final HashSet databases = new HashSet<>();
-        databases.add("reformer");
-        dto.setDatabases(databases);
-        final HashSet<String> collects = new HashSet<>();
-        collects.add("reformer.rf_resource");
-        dto.setCollects(collects);
+        dto.setDatabases(Sets.newHashSet("reformer"));
+        dto.setCollects(Sets.newHashSet("reformer.rf_resource"));
         dto.setErrorsTolerance(OpErrorEnum.ALL);
         dto.setBatchSize(1000);
         dto.setPollMaxBatchSize(1000);
         dto.setAwaitTime(1500);
         dto.setHeartbeatInterval(30000);
-        dto.setConnectionOptions("authSource=reformer");
+        dto.setConnectionOptions(null);
         dto.setCopyExisting(true);
         dto.setCheckPointDir("/Users/luzhichao/Downloads/flink/save-point/");
         dto.setCheckpointTime(5000);

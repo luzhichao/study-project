@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * 消费者处理类
- * ackMode设置为MANUAL或MANUAL_IMMEDIATE才需要手动提交
+ * ackMode设置为MANUAL或MANUAL_IMMEDIATE则必须要手动提交
  *
  * @author LZC
  * @version 1.2.0

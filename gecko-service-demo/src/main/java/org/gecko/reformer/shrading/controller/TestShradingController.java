@@ -6,7 +6,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.gecko.reformer.annotation.WebController;
-import org.gecko.reformer.contexts.DataRuleContext;
+import org.gecko.reformer.context.DataRuleContext;
 import org.gecko.reformer.shrading.dto.VehicleDTO;
 import org.gecko.reformer.shrading.entity.User;
 import org.gecko.reformer.shrading.entity.VehicleRealLocation;

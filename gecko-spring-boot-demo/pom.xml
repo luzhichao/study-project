@@ -48,6 +48,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.gecko.reformer</groupId>
+            <artifactId>module-kafka</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
             <version>3.1.1</version>

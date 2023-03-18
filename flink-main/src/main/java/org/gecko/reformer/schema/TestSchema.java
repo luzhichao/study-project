@@ -21,7 +21,6 @@ import java.util.Map;
  **/
 @Slf4j
 public class TestSchema extends BaseReformerDeserializationSchema<TestModel> {
-
     private static final long serialVersionUID = 1L;
 
     @Override

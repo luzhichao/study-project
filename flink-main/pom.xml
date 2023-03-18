@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>org.gecko.reformer</groupId>
-            <artifactId>module-flink-core</artifactId>
+            <artifactId>module-flink-base</artifactId>
         </dependency>
     </dependencies>
 

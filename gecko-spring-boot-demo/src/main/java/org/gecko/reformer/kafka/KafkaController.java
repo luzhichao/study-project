@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 
 /**
- * TODO
+ * 发送消息
  *
  * @author LZC
  * @version 1.2.0
@@ -38,5 +38,4 @@ public class KafkaController {
         final ListenableFuture<SendResult<String, Object>> send = kafkaService.send("test-kafka", massage);
         return Result.success();
     }
-
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * 消费者处理类
+ * 消费者监听处理类
  * ackMode设置为MANUAL或MANUAL_IMMEDIATE则必须要手动提交
  *
  * @author LZC

@@ -3,7 +3,6 @@ package org.gecko.reformer.kafka;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -33,11 +32,11 @@ public class ConsumerHandler {
      * @date 2023-03-18
      * @version 1.2.0
      **/
-    @KafkaListener(topics = {"test-kafka"})
-    public void listenSingleString(ConsumerRecord<String, Object> record, Acknowledgment ack) {
-        log.info("topic#test-kafka===massage=={}", record.toString());
-        ack.acknowledge();
-    }
+    //@KafkaListener(topics = {"test-kafka"})
+    //public void listenSingleString(ConsumerRecord<String, Object> record, Acknowledgment ack) {
+    //    log.info("topic#test-kafka===massage=={}", record.toString());
+    //    ack.acknowledge();
+    //}
 
     /**
      * 非批量消费，手动提交
@@ -52,11 +51,11 @@ public class ConsumerHandler {
      * @date 2023-03-18
      * @version 1.2.0
      **/
-    @KafkaListener(topics = {"test-kafka"})
-    public void listenSingleString(String record, Acknowledgment ack) {
-        log.info("topic#test-kafka===massage=={}", record);
-        ack.acknowledge();
-    }
+    //@KafkaListener(topics = {"test-kafka"})
+    //public void listenSingleString(String record, Acknowledgment ack) {
+    //    log.info("topic#test-kafka===massage=={}", record);
+    //    ack.acknowledge();
+    //}
 
     /**
      * 批量消费，必须手动提交
@@ -71,11 +70,11 @@ public class ConsumerHandler {
      * @date 2023-03-18
      * @version 1.2.0
      **/
-    @KafkaListener(topics = {"test-kafka"})
-    public void listenBatchRecord(List<ConsumerRecord<String, Object>> record, Acknowledgment ack) {
-        log.info("topic#test-kafka===massage=={}", record.toString());
-        ack.acknowledge();
-    }
+    //@KafkaListener(topics = {"test-kafka"})
+    //public void listenBatchRecord(List<ConsumerRecord<String, Object>> record, Acknowledgment ack) {
+    //    log.info("topic#test-kafka===massage=={}", record.toString());
+    //    ack.acknowledge();
+    //}
 
     /**
      * 批量消费，必须手动提交
@@ -90,11 +89,11 @@ public class ConsumerHandler {
      * @date 2023-03-18
      * @version 1.2.0
      **/
-    @KafkaListener(topics = {"test-kafka"})
-    public void listenBatchString(List<String> record, Acknowledgment ack) {
-        log.info("topic#test-kafka===massage=={}", record.toString());
-        ack.acknowledge();
-    }
+    //@KafkaListener(topics = {"test-kafka"})
+    //public void listenBatchString(List<String> record, Acknowledgment ack) {
+    //    log.info("topic#test-kafka===massage=={}", record.toString());
+    //    ack.acknowledge();
+    //}
 
     /**
      * 批量消费，自动提交
@@ -109,26 +108,26 @@ public class ConsumerHandler {
      * @date 2023-03-18
      * @version 1.2.0
      **/
-    @KafkaListener(topics = {"test-kafka"})
-    public void listenBatchRecordAutoCommit(List<ConsumerRecord<String, Object>> record) {
-        log.info("topic#test-kafka===massage=={}", record.toString());
-    }
-
-    /**
-     * 批量消费，自动提交
-     * ack-mode!=MANUAL或MANUAL_IMMEDIATE
-     * batch-listener=true
-     * spring.kafka.consumer.enable-auto-commit=true或false
-     *
-     * @param record
-     * @return void
-     * @throws
-     * @author LZC
-     * @date 2023-03-18
-     * @version 1.2.0
-     **/
-    @KafkaListener(topics = {"test-kafka"})
+    @KafkaListener(topics = {"test-kafka"}, groupId = "groupId_#{T(java.util.UUID).randomUUID()}")
     public void listenBatchStringAutoCommit(List<String> record) {
+        log.info("topic#test-kafka===massage=={}", record.toString());
+    }
+
+    /**
+     * 批量消费，自动提交
+     * ack-mode!=MANUAL或MANUAL_IMMEDIATE
+     * batch-listener=true
+     * spring.kafka.consumer.enable-auto-commit=true或false
+     *
+     * @param record
+     * @return void
+     * @throws
+     * @author LZC
+     * @date 2023-03-18
+     * @version 1.2.0
+     **/
+    @KafkaListener(topics = {"test-kafka"}, groupId = "test_groupId")
+    public void listenBatchRecordAutoCommit(List<ConsumerRecord<String, Object>> record) {
         log.info("topic#test-kafka===massage=={}", record.toString());
     }
 }

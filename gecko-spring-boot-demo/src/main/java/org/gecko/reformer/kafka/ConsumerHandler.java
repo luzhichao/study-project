@@ -108,7 +108,7 @@ public class ConsumerHandler {
      * @date 2023-03-18
      * @version 1.2.0
      **/
-    @KafkaListener(topics = {"test-kafka"}, groupId = "groupId_#{T(java.util.UUID).randomUUID()}")
+    @KafkaListener(topics = {"test-kafka"}, groupId = "groupId_#{T(System).currentTimeMillis()}")
     public void listenBatchStringAutoCommit(List<String> record) {
         log.info("topic#test-kafka===massage=={}", record.toString());
     }

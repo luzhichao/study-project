@@ -1,5 +1,6 @@
 package org.gecko.reformer.example;
 
+import com.google.common.collect.Sets;
 import com.ververica.cdc.connectors.mongodb.MongoDBSource;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -13,6 +14,8 @@ import java.util.HashSet;
 
 public class MongodbSourceExample {
 
+    private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(MongodbSourceExample.class);
+
     public static void main(String[] args) throws Exception {
         // hdfs://192.168.11.59:9000/user/reformer
         ReformerFlinkMongoDTO dto = new ReformerFlinkMongoDTO();
@@ -23,8 +26,7 @@ public class MongodbSourceExample {
         final HashSet databases = new HashSet<>();
         databases.add("reformer");
         dto.setDatabases(databases);
-        final HashSet<String> collects = new HashSet<>();
-        collects.add("reformer.rf_resource");
+        final HashSet<String> collects = Sets.newHashSet("reformer.rf_transport");
         dto.setCollects(collects);
         dto.setErrorsTolerance(OpErrorEnum.ALL);
         dto.setBatchSize(1000);
@@ -32,10 +34,12 @@ public class MongodbSourceExample {
         dto.setAwaitTime(1500);
         dto.setHeartbeatInterval(30000);
         dto.setConnectionOptions("authSource=reformer");
-        dto.setCopyExisting(true);
+        dto.setCopyExisting(false);
         dto.setCheckPointDir("/Users/luzhichao/Downloads/flink/save-point/");
         dto.setCheckpointTime(5000);
         dto.setCheckpointTimeout(10000);
+
+        log.error("================");
 
         DataStreamSource<String> source = FlinkUtils.getMgSource(dto);
         source.print().setParallelism(1);

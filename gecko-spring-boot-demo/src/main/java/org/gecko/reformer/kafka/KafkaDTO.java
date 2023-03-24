@@ -3,6 +3,10 @@ package org.gecko.reformer.kafka;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Date;
 
 /**
  * TODO
@@ -17,5 +21,9 @@ public class KafkaDTO implements Serializable {
 
     private String topic;
     private String massage;
+    private Date date;
+    private LocalDate localDate;
+    private LocalTime localTime;
+    private LocalDateTime localDateTime;
 
 }

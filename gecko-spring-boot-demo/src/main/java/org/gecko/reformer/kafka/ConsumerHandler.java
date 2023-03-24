@@ -130,4 +130,21 @@ public class ConsumerHandler {
     //public void listenBatchRecordAutoCommit(List<ConsumerRecord<String, Object>> record) {
     //    log.info("topic#test-kafka===massage=={}", record.toString());
     //}
+
+
+    @KafkaListener(topics = {"test-kafka-send-obj"})
+    public void listenObj(List<String> record) {
+        log.info("topic#test-kafka===massage=={}", record.toString());
+    }
+
+    @KafkaListener(topics = {"test-kafka-fixed-topic-obj1"})
+    public void listenFixedObj1(List<String> record) {
+        log.info("topic#test-kafka===massage=={}", record.toString());
+    }
+
+    @KafkaListener(topics = {"test-kafka-fixed-topic-obj2"}, containerFactory = "myFactory")
+    public void listenFixedObj2(List<String> record) {
+        log.info("topic#test-kafka===massage=={}", record.toString());
+    }
+
 }

@@ -2,10 +2,10 @@ package org.gecko.reformer.kafka;
 
 import org.gecko.reformer.config.KafkaConsumerConfig;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.config.KafkaListenerContainerFactory;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 

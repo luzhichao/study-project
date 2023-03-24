@@ -5,6 +5,8 @@ import com.ververica.cdc.connectors.mongodb.MongoDBSource;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.gecko.reformer.constant.OpErrorEnum;
 import org.gecko.reformer.dto.ReformerFlinkMongoDTO;
 import org.gecko.reformer.schema.MongodbDebeziumDeserializationSchema;
@@ -14,7 +16,7 @@ import java.util.HashSet;
 
 public class MongodbSourceExample {
 
-    private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(MongodbSourceExample.class);
+    private static final Logger log = LogManager.getLogger(MongodbSourceExample.class);
 
     public static void main(String[] args) throws Exception {
         // hdfs://192.168.11.59:9000/user/reformer
@@ -39,7 +41,7 @@ public class MongodbSourceExample {
         dto.setCheckpointTime(5000);
         dto.setCheckpointTimeout(10000);
 
-        log.error("================");
+        MongodbSourceExample.log.error("================");
 
         DataStreamSource<String> source = FlinkUtils.getMgSource(dto);
         source.print().setParallelism(1);

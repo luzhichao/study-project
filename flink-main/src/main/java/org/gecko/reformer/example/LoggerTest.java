@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
  * @date 2023-03-15
  **/
 public class LoggerTest {
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger(LoggerTest.class);
     public static void main(String[] args) {
         String msg = "${java:vm}";
         logger.error("hello,{}",msg);

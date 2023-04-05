@@ -1,5 +1,6 @@
 package org.gecko.reformer.kafka;
 
+import cn.hutool.core.util.StrUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
@@ -39,59 +40,33 @@ public class KafkaController {
     @SysLog(operation = LogConstants.Operation.OTHER, ignore = true)
     @ApiOperation("testKafkaSendMassage")
     @PostMapping("/testKafkaSendMassage")
-    public Result<String> testKafkaSendMassage(@RequestBody String massage) {
-        kafkaService.send("test-kafka", massage);
+    public Result<String> testKafkaSendMassage(@RequestBody SendDTO dto) {
+        final KafkaDTO send = new KafkaDTO();
+        send.setTopic(dto.getTopic());
+        send.setMassage(dto.getMassage());
+        send.setDate(new Date());
+        send.setLocalDate(LocalDate.now());
+        send.setLocalTime(LocalTime.now());
+        send.setLocalDateTime(LocalDateTime.now());
+        kafkaService.send(dto.getTopic(), send);
         return Result.success();
     }
 
     @SneakyThrows
     @SysLog(operation = LogConstants.Operation.OTHER, ignore = true)
-    @ApiOperation("testKafkaSendObj")
-    @PostMapping("/testKafkaSendObj")
-    public Result<String> testKafkaSendObj(@RequestBody String massage) {
-        final KafkaDTO dto = new KafkaDTO();
-        dto.setTopic("test-kafka-send-obj");
-        dto.setMassage(massage);
-        dto.setDate(new Date());
-        dto.setLocalDate(LocalDate.now());
-        dto.setLocalTime(LocalTime.now());
-        dto.setLocalDateTime(LocalDateTime.now());
-
-        kafkaService.send("test-kafka-send-obj", dto);
-        return Result.success();
-    }
-
-    @SneakyThrows
-    @SysLog(operation = LogConstants.Operation.OTHER, ignore = true)
-    @ApiOperation("testKafkaFixedTopic1")
-    @PostMapping("/testKafkaFixedTopic1")
-    public Result<String> testKafkaFixedTopic1(@RequestBody String massage) {
-        final KafkaDTO dto = new KafkaDTO();
-        dto.setTopic("test-kafka-fixed-topic-obj1");
-        dto.setMassage(massage);
-        dto.setDate(new Date());
-        dto.setLocalDate(LocalDate.now());
-        dto.setLocalTime(LocalTime.now());
-        dto.setLocalDateTime(LocalDateTime.now());
-
-        kafkaService.send("test-kafka-fixed-topic-obj1", dto);
-        return Result.success();
-    }
-
-    @SneakyThrows
-    @SysLog(operation = LogConstants.Operation.OTHER, ignore = true)
-    @ApiOperation("testKafkaFixedTopic2")
-    @PostMapping("/testKafkaFixedTopic2")
-    public Result<String> testKafkaFixedTopic2(@RequestBody String massage) {
-        final KafkaDTO dto = new KafkaDTO();
-        dto.setTopic("test-kafka-fixed-topic-obj2");
-        dto.setMassage(massage);
-        dto.setDate(new Date());
-        dto.setLocalDate(LocalDate.now());
-        dto.setLocalTime(LocalTime.now());
-        dto.setLocalDateTime(LocalDateTime.now());
-
-        kafkaService.send("test-kafka-fixed-topic-obj2", dto);
+    @ApiOperation("testKafkaBatchSendMassage")
+    @PostMapping("/testKafkaBatchSendMassage")
+    public Result<String> testKafkaBatchSendMassage(@RequestBody SendDTO dto) {
+        for (int i = 0; i < 10; i++) {
+            final KafkaDTO send = new KafkaDTO();
+            send.setTopic(dto.getTopic());
+            send.setMassage(dto.getMassage() + StrUtil.toString(i));
+            send.setDate(new Date());
+            send.setLocalDate(LocalDate.now());
+            send.setLocalTime(LocalTime.now());
+            send.setLocalDateTime(LocalDateTime.now());
+            kafkaService.send(dto.getTopic(), send);
+        }
         return Result.success();
     }
 }

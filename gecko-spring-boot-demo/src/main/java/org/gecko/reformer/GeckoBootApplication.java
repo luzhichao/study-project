@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2022-09-08
  **/
 @SpringBootApplication
-public class GeckoApplication {
+public class GeckoBootApplication {
     public static void main(String[] args) {
-        SpringApplication.run(GeckoApplication.class, args);
+        SpringApplication.run(GeckoBootApplication.class, args);
     }
 }

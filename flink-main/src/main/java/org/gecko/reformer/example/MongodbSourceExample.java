@@ -41,8 +41,6 @@ public class MongodbSourceExample {
         dto.setCheckpointTime(5000);
         dto.setCheckpointTimeout(10000);
 
-        MongodbSourceExample.log.error("================");
-
         DataStreamSource<String> source = FlinkUtils.getMgSource(dto);
         source.print().setParallelism(1);
         final StreamExecutionEnvironment env = source.getExecutionEnvironment();

@@ -22,7 +22,9 @@ public class OrgHandler implements IColHandler {
         return Lists.newArrayList("（括号）浏阳市经济开发区（括号）",
                 "湖南方锐达科技有限(公司)",
                 "湖南锐林新能源科技有限-公司",
-                "湖南罗比特化学材料有限/公司");
+                "湖南罗比特化学材料有限/公司",
+                "空子级数据/公司",
+                "大数据-公式");
     }
 
     @Override
@@ -32,6 +34,8 @@ public class OrgHandler implements IColHandler {
         dataParams.add(new LookupParam("湖南方锐达科技有限(公司)", "524045829321789440"));
         dataParams.add(new LookupParam("湖南锐林新能源科技有限-公司", "524417282194018304"));
         dataParams.add(new LookupParam("湖南罗比特化学材料有限/公司", "548641444114468864"));
+        dataParams.add(new LookupParam("空子级数据/公司", "000000"));
+        dataParams.add(new LookupParam("大数据-公式", "999999"));
         return dataParams;
     }
 }

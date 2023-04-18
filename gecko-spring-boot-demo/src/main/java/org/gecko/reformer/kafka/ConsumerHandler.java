@@ -132,7 +132,7 @@ public class ConsumerHandler {
     //}
 
 
-    @KafkaListener(topics = {"test-kafka-send-obj"})
+    @KafkaListener(topics = {"${reformer.test.topic2}"})
     public void listenObj(List<String> record) {
         log.info("topic#test-kafka===massage=={}", record.toString());
     }
@@ -142,7 +142,7 @@ public class ConsumerHandler {
         log.info("topic#test-kafka===massage=={}", record.toString());
     }
 
-    @KafkaListener(topics = {"test-kafka-fixed-topic-obj2"}, containerFactory = "myFactory")
+    @KafkaListener(topics = {"${reformer.test.topic}"}, containerFactory = "myFactory")
     public void listenFixedObj2(List<String> record) {
         log.info("topic#test-kafka===massage=={}", record.toString());
     }

@@ -4,7 +4,6 @@ import cn.afterturn.easypoi.excel.ExcelImportUtil;
 import cn.afterturn.easypoi.excel.entity.ExportParams;
 import cn.afterturn.easypoi.excel.entity.ImportParams;
 import cn.afterturn.easypoi.excel.entity.enmus.ExcelType;
-import cn.hutool.core.util.StrUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.SneakyThrows;
@@ -16,7 +15,6 @@ import org.gecko.reformer.poi.handler.impl.SensorImportHandler;
 import org.gecko.reformer.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
@@ -41,21 +39,21 @@ public class TestPoiController {
     // ----------------------------EasyPoi----------------------------------
 
     @SneakyThrows
-    @ApiOperation("test1")
+    @ApiOperation(value = "导出模版XSSF", produces = "application/octet-stream")
     @PostMapping("/test1")
-    public void test1(HttpServletResponse response, @RequestBody String fileName) {
+    public void test1(HttpServletResponse response) {
         final ExportParams exportParams = new ExportParams();
         exportParams.setType(ExcelType.XSSF);
-        ExcelUtils.exportTemplate(exportParams, StrUtil.blankToDefault(fileName, "test1"), SensorImportDTO.class, null, response);
+        ExcelUtils.exportTemplate(exportParams, "导出模版XSSF", SensorImportDTO.class, null, response);
     }
 
     @SneakyThrows
-    @ApiOperation("test2")
+    @ApiOperation(value = "导出模版HSSF", produces = "application/octet-stream")
     @PostMapping("/test2")
-    public void test2(HttpServletResponse response, @RequestBody String fileName) {
+    public void test2(HttpServletResponse response) {
         final ExportParams exportParams = new ExportParams();
         exportParams.setType(ExcelType.HSSF);
-        ExcelUtils.exportTemplate(exportParams, StrUtil.blankToDefault(fileName, "test2"), SensorImportDTO.class, null, response);
+        ExcelUtils.exportTemplate(exportParams, "导出模版HSSF", SensorImportDTO.class, null, response);
     }
 
     //@SneakyThrows
@@ -93,7 +91,7 @@ public class TestPoiController {
 
     @SneakyThrows
     @PostMapping("/test3")
-    @ApiOperation("test3")
+    @ApiOperation("导入Excel")
     public Result<String> test3(@RequestPart("file") MultipartFile file) {
         ImportParams params = new ImportParams();
         params.setNeedVerify(true);

@@ -50,6 +50,14 @@ public class RegionHandler implements IColHandler {
         cascadeData.put("524417282194018304", list3);
         // 湖南罗比特化学材料有限公司
         cascadeData.put("548641444114468864", list4);
+        // 空子级数据公司
+        cascadeData.put("000000", Lists.newArrayList());
+        // 大数据公司
+        final List<String> bigData = Lists.newArrayList();
+        for (int i = 0; i < 4000; i++) {
+            bigData.add("大数据公司数据" + i);
+        }
+        cascadeData.put("999999", bigData);
         return cascadeData;
     }
 }

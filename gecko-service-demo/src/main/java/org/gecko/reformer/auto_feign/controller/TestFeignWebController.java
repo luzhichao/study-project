@@ -4,7 +4,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.gecko.reformer.annotation.WebController;
 import org.gecko.reformer.auto_feign.dto.QueryDTO;
-import org.gecko.reformer.auto_feign.dto.UserDTO;
 import org.gecko.reformer.auto_feign.feign.TestFeign;
 import org.gecko.reformer.vo.Result;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,18 +21,17 @@ import javax.annotation.Resource;
  **/
 @Api(tags = "TestFeign")
 @WebController
+//@FeignController
 @RequestMapping("/api/test-controller/")
-public class TestFeignController {
+public class TestFeignWebController {
 
-        @Resource
-        private TestFeign testFeign;
+    @Resource
+    private TestFeign testFeign;
 
-        @PostMapping("/test")
-        @ApiOperation(value = "测试")
-        public Result test(@RequestBody QueryDTO dto) {
-
-            final UserDTO result = testFeign.queryUserById(dto.getId());
-
-            return Result.success(result);
-        }
+    @PostMapping("/test")
+    @ApiOperation(value = "测试")
+    public Result test(@RequestBody QueryDTO dto) {
+        testFeign.queryUserByRoleIds(dto.getIds());
+        return Result.success();
+    }
 }

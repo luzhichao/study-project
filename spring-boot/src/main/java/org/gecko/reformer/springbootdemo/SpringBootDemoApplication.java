@@ -6,13 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @Slf4j
 @SpringBootApplication(scanBasePackages = "org.gecko.reformer.**")
-public class Application {
+public class SpringBootDemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-        log.info("======info======");
-        log.debug("======debug======");
-        log.error("======error======");
+        SpringApplication.run(SpringBootDemoApplication.class, args);
     }
 
 }

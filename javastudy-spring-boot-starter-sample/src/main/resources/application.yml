@@ -1,0 +1,13 @@
+
+org:
+  gecko:
+    springboot:
+      starter:
+        enabled: true
+
+proper: abcdef
+
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration

@@ -5,6 +5,7 @@ import com.reformer.constants.TimeConstants;
 import com.reformer.dto.RegeoDTO;
 import com.reformer.service.AmapService;
 import com.reformer.service.RedisService;
+import com.reformer.util.VideoUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
